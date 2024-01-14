@@ -17,10 +17,9 @@ export default function Home() {
 
   // filter states
   const [fuel, setFuel] = useState('');
-  const [year, setYear] = useState(2022);
-
+  const [year, setYear] = useState(2023);
   // pagination states
-  const [limit, setLimit] = useState(10)
+  const [limit, setLimit] = useState(12)
 
   const getCars = async () => {
     setLoading(true);
@@ -28,9 +27,9 @@ export default function Home() {
     try {
       const result = await fetchCars({
         manufacturer: manufacturer || '',
-        year: year || 2022,
+        year: year || 2023,
         fuel: fuel || '',
-        limit: limit || 10,
+        limit: limit || 12,
         model: model || '',
       });
   
@@ -90,7 +89,7 @@ export default function Home() {
            )}
 
            <ShowMore
-              pageNumber={limit / 10}
+              pageNumber={limit / 12}
               isNext={limit > allCars.length}
               setLimit={setLimit}
            />
