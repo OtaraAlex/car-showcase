@@ -1,8 +1,17 @@
-import { Footer, Navbar } from "@/components";
-import "../globals.css";
-import { ClerkProvider } from "@clerk/nextjs";
+import "../globals.css"
 
-export const metadata = {
+import type { Metadata } from "next";
+import { Poppins } from "next/font/google";
+import { ClerkProvider } from "@clerk/nextjs";
+import { Footer, Navbar } from "@/components";
+
+const poppins = Poppins({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-poppins",
+});
+
+export const metadata: Metadata = {
   title: "Car Hub",
   description: "Discover the best cars in the world.",
 };
@@ -13,14 +22,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className="relative">
-        <ClerkProvider>
+    <ClerkProvider>
+      <html lang="en">
+        <body className={poppins.variable}>
           <Navbar />
           {children}
           <Footer />
-        </ClerkProvider>
-      </body>
-    </html>
+          </body>
+      </html>
+    </ClerkProvider>
   );
 }
